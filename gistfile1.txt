@@ -1,0 +1,34 @@
+#!/bin/bash
+
+cd ~/Jenkins/tmp_Build
+
+#Creating a variable with current datetime for backup folder name up the war file.
+folder_name=$(date +"%F.%T.%N")
+version=$(cat version.txt) # Reading commit Id
+
+count=$(ls | grep $version | wc -l) # Checking the number of existing files for the current commit id
+
+#Creating a new backup folder for Backing up the war file
+mkdir ../backups/$version-c$count--$folder_name
+
+\cp SpringbootV1-0.0.1-SNAPSHOT.war ../backups/$version-c$count--$folder_name/SpringbootV1-0.0.1-SNAPSHOT.war
+
+\cp SpringbootV1-0.0.1-SNAPSHOT.war ../build/SpringbootV1/SpringbootV1-0.0.1-SNAPSHOT.war
+
+cd ../build/SpringbootV1
+
+
+echo "Backup Complete --- Starting Docker Build"
+
+echo Generating a Docker Image
+sudo docker build -t vicky2911/springboot-v1 .
+
+echo Stopping the currently running image with the springboot app
+sudo docker container stop infotrends 
+sudo docker container rm infotrends 
+
+echo Launching a new Instance
+sudo docker run --name infotrends -p 8080:8081 -itd vicky2911/springboot-v1
+
+echo "Pushimg the image to dockerhub"
+sudo docker push vicky2911/springboot-v1
