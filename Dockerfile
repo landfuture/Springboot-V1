@@ -3,8 +3,8 @@ FROM adoptopenjdk/openjdk11:x86_64-alpine-jdk-11.0.4_11
 
 EXPOSE 8080:8081
 # RUN addgroup -S spring && adduser -S spring -G spring
-RUN addgroup spring
-RUN adduser  -G spring -D spring
+RUN addgroup -g 1000 spring
+RUN adduser -u 1000   -G spring -D spring
 
 
 USER spring:spring  
