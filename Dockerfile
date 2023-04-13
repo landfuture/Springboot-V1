@@ -6,7 +6,9 @@ EXPOSE 8080:8081
 # RUN addgroup -g 1000 spring
 # RUN adduser -u 1000   -G spring -D spring
 
-RUN adduser --system --group spring
+# RUN adduser --system --group spring
+
+RUN useradd --user-group --create-home --no-log-init --shell /bin/bash spring
 
 USER spring:spring  
 COPY SpringbootV1-0.0.1-SNAPSHOT.war SpringbootV1-0.0.1-SNAPSHOT.war ENTRYPOINT ["java","-jar","/SpringbootV1-0.0.1-SNAPSHOT.war"]
