@@ -10,6 +10,7 @@ EXPOSE 8080:8081
 
 # RUN groupadd spring && useradd -g spring spring
 # RUN addgroup spring
+RUN adduser -D spring
 
 # USER spring:spring
 # COPY SpringbootV1-0.0.1-SNAPSHOT.war SpringbootV1-0.0.1-SNAPSHOT.war ENTRYPOINT ["java","-jar","/SpringbootV1-0.0.1-SNAPSHOT.war"]
