@@ -9,14 +9,16 @@ version=$(cat version.txt) # Reading commit Id
 count=$(ls | grep $version | wc -l) # Checking the number of existing files for the current commit id
 
 #Creating a new backup folder for Backing up the war file
-mkdir ../backups/$version-c$count--$folder_name
+mkdir -p ../backups/$version-c$count--$folder_name
+mkdir -p ../build/SpringbootV1
 
 \cp SpringbootV1-0.0.1-SNAPSHOT.war ../backups/$version-c$count--$folder_name/SpringbootV1-0.0.1-SNAPSHOT.war
 
 \cp SpringbootV1-0.0.1-SNAPSHOT.war ../build/SpringbootV1/SpringbootV1-0.0.1-SNAPSHOT.war
 
-cd ../build/SpringbootV1
+mv  ~/Dockerfile ../build/SpringbootV1
 
+cd ../build/SpringbootV1
 
 echo "Backup Complete --- Starting Docker Build"
 
