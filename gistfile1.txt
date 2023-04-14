@@ -23,14 +23,12 @@ cd ../build/SpringbootV1
 echo "Backup Complete --- Starting Docker Build"
 
 echo Generating a Docker Image
-sudo docker build -t vicky2911/springboot-v1 .
+docker build -t vicky2911/springboot-v1 .
 
 echo Stopping the currently running image with the springboot app
 sudo docker container stop infotrends 
 sudo docker container rm infotrends 
 
 echo Launching a new Instance
-sudo docker run --name infotrends -p 8080:8081 -itd vicky2911/springboot-v1
+sudo docker run --name infotrends -p 8083:8081 -itd vicky2911/springboot-v1
 
-echo "Pushimg the image to dockerhub"
-sudo docker push vicky2911/springboot-v1
