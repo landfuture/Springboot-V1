@@ -21,6 +21,6 @@ copy /Y "%WORKSPACE%\deployments\Dockerfile" "C:\Users\cjs99\Jenkins\Builds\Spri
 
 cd "C:\Users\cjs99\Jenkins\Builds\SpringbootV1"
 
-docker build -t cjs992911/springboot-v1:%version% -t cjs992911/springboot-v1:latest .
-docker push cjs992911/springboot-v1:%version%
-docker push cjs992911/springboot-v1:latest
+docker build -t jakinkorea/springboot-v1:%version% -t jakinkorea/springboot-v1:latest .
+docker push jakinkorea/springboot-v1:%version%
+docker push jakinkorea/springboot-v1:latest
