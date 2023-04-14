@@ -29,8 +29,8 @@ echo Stopping the currently running image with the springboot app
 #sudo docker container stop infotrends 
 #sudo docker container rm infotrends 
 
-docker ps -q --filter "name=infotrends" | grep -q . && docker stop infotrends && docker rm -fv infotrends
+#docker ps -q --filter "name=infotrends" | grep -q . && docker stop infotrends && docker rm -fv infotrends
 
 echo Launching a new Instance
-sudo docker run --name infotrends -p 8083:8081 -itd vicky2911/springboot-v1
+docker run --name infotrends -p 8083:8081 -itd vicky2911/springboot-v1
 

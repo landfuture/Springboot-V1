@@ -22,7 +22,7 @@ spec:
         app: infotrends
     spec:
       containers:
-      - image: vicky2911/springboot-v1:latest
+      - image: cjs992911/springboot-v1:latest
         imagePullPolicy: Always
         name: infotrends
         ports:
